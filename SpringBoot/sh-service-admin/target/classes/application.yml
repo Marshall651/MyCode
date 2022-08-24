@@ -1,0 +1,38 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: sh-service-admin
+  mvc:
+    static-path-pattern: static/**
+  datasource:
+    url: jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+
+dubbo:
+  application:
+    name: dubbo-consumer-admin
+    enable-file-cache: false
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+    timeout: 600000
+    file: ./dubbo-cache-consumer-admin
+  version: 1.0.0
+  scan:
+    base-packages: com.rushuni.sh.admin
