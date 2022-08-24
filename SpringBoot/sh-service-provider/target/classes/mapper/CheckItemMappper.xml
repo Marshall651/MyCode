@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rushuni.sh.provider.mapper.CheckItemMapper">
+    <!--插入检查项数据-->
+    <insert id="insert" parameterType="com.rushuni.sh.common.entity.CheckItem">
+        insert into t_checkitem(code,name,sex,age,price,type,remark,attention)
+        values
+            (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
+    </insert>
+    <!--分页查询-->
+    <select id="selectByCondition" resultType="com.rushuni.sh.common.entity.CheckItem" parameterType="string">
+        select * from t_checkitem
+        <if test="value!=null and value.length>0">
+            where code = #{value} or name = #{value}
+        </if>
+    </select>
+    
+    <delete id="handleDelete" parameterType="int">
+        delete from t_checkitem where id = #{id}
+    </delete>
+
+    <update id="handleUpdate" parameterType="com.rushuni.sh.common.entity.CheckItem">
+        update t_checkitem set code=#{code},name=#{name},sex=#{sex},age=#{age},price=#{price},type=#{code},remark=#{remark},attention=#{attention}
+        where id={id}
+    </update>
+
+    <select id="selectList" resultType="com.rushuni.sh.common.entity.CheckItem">
+        select * from t_checkitem
+    </select>
+
+    <select id="findCheckItemById" parameterType="int" resultType="com.rushuni.sh.common.entity.CheckItem">
+        select * from t_checkitem
+        where id in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id})
+    </select>
+</mapper>

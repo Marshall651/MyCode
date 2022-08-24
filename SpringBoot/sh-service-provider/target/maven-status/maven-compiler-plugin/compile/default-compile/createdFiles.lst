@@ -1,0 +1,10 @@
+com\rushuni\sh\provider\service\impl\CheckGroupServiceImpl.class
+com\rushuni\sh\provider\service\impl\SeatmealServiceImpl.class
+com\rushuni\sh\provider\service\impl\OrdersettingServiceImpl.class
+com\rushuni\sh\provider\mapper\CheckItemMapper.class
+com\rushuni\sh\provider\ProviderApplication.class
+com\rushuni\sh\provider\config\BeanConfig.class
+com\rushuni\sh\provider\service\impl\CheckitemServiceImpl.class
+com\rushuni\sh\provider\mapper\CheckGroupMapper.class
+com\rushuni\sh\provider\mapper\SetmealMapper.class
+com\rushuni\sh\provider\mapper\OrdersettingMapper.class

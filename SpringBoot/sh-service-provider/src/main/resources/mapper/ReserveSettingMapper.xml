@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rushuni.sh.provider.mapper.ReserveSettingMapper">
+    <insert id="add">
+        insert into t_ordersetting
+            (orderDate, number, reservations)
+        values (#{orderDate}, #{number}, #{reservations})
+    </insert>
+
+    <update id="editNumberByOrderDate">
+        update t_ordersetting set number = #{number} where orderDate = #{orderDate, jdbcType=DATE}
+    </update>
+
+    <select id="findCountByOrderDate" resultType="long">
+        select count(id)
+        from t_ordersetting
+        where orderDate = #{orderDate, jdbcType=DATE}
+    </select>
+
+    <!--根据日期范围查询-->
+    <select id="getOrderSettingByMonth" resultType="com.rushuni.sh.common.entity.ReserveSetting">
+        select *
+        from t_ordersetting
+        where orderDate between #{begin} and #{end}
+    </select>
+
+    <!--根据日期查询预约设置信息-->
+    <select id="selectByDate" resultType="com.rushuni.sh.common.entity.ReserveSetting">
+        select * from t_ordersetting WHERE orderDate =#{reverseDate, jdbcType=DATE}
+    </select>
+
+    <!--根据预约日期更新已预约人数-->
+    <update id="update" parameterType="com.rushuni.sh.common.entity.ReserveSetting">
+        update t_ordersetting set reservations = #{reservations} where orderDate = #{orderDate}
+    </update>
+
+
+</mapper>
