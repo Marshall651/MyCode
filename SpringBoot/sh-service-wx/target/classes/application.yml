@@ -1,0 +1,44 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: sh-service-wx
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lifeng
+    username: root
+    password: root
+    druid:
+      db-type: mysql
+      initial-size: 5
+      max-active: 10
+      min-idle: 1
+      max-wait: 60000
+  mvc:
+    static-path-pattern: static/**
+dubbo:
+  application:
+    name: dubbo-consumer-wx
+    enable-file-cache: false
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+    timeout: 60000
+    file: ./dubbo-cache-consumer-wx
+  version: 1.0.0
+  scan:
+    base-packages: com.rushuni.sh.wx
