@@ -36,8 +36,8 @@ public class SmsUtils {
     public static String sendShortMessage(String templateCode, String phoneNumbers, String templateParam) {
         // Configure Credentials authentication information, including ak, secret, token
         StaticCredentialProvider provider = StaticCredentialProvider.create(Credential.builder()
-                .accessKeyId("LTAI5tG4LKsocpyUr3eR3fbB")
-                .accessKeySecret("zABopIAWqQOP9uVx2iSVuzBJGVz5Y7")
+                .accessKeyId("youacceskey")
+                .accessKeySecret("youacceskey")
                 //.securityToken("<your-token>") // use STS token
                 .build());
 
